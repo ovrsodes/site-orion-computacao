@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="src/js/head.js"></script>
+    <style>
+        .fade-hidden {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-hidden.delay-1 { transition-delay: 0.1s; }
+        .fade-hidden.delay-2 { transition-delay: 0.2s; }
+        .fade-hidden.delay-3 { transition-delay: 0.3s; }
+    </style>
+    <title>Orion</title>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 bg-white dark:bg-gray-900 w-full border-b border-gray-200 dark:border-gray-600">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="#home" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="src/images/logo/orionlogo.png" class="block dark:hidden w-32 h-auto" alt="logo">
+            <img src="src/images/logo/orionlogo.png" class="hidden dark:block w-32 h-auto" alt="logo">
+        </a>
+        <div class="flex md:order-2 space-x-3 md:space-x-1 rtl:space-x-reverse">
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Contato
+            </button>
+            <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+            </button>
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <li>
+                    <a href="#home" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        Início
+                    </a>
+                </li>
+                <li>
+                    <a href="#about" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        Sobre
+                    </a>
+                </li>
+                <li>
+                    <a href="#areas" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        Áreas
+                    </a>
+                </li>
+                <li>
+                    <a href="#projetos" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        Projetos
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <!-- HOME -->
+    <section id="home" class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+            <a href="#" class="fade-hidden inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700" role="alert">
+                <span class="text-sm font-medium px-4 py-1">
+                    Orion Aerospace Design - UTFPR PG
+                </span> 
+                <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+            </a>
+            <h1 class="fade-hidden delay-1 mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                Área de <br>
+                
+                <span class="text-blue-700 dark:text-blue-500">Computação</span>
+            </h1>
+            <p class="fade-hidden delay-2 mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
+                Desenvolvemos softwares, sistemas de inteligência artificial e soluções digitais que impulsionam as missões da Orion.
+            </p>
+            <div class="fade-hidden delay-3 flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+                <a href="#areas" id="btn-conhecer" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center dark:text-white rounded-lg focus:ring-4 focus:ring-primary-300">
+                    Conhecer
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </a>
+                 
+            </div>
+            </div> 
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="bg-white dark:bg-gray-900">
+        <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+            <div class="fade-hidden font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                <span class="text-blue-700 dark:text-blue-500">
+                    Sobre nós
+                </span>
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                    Orion Aerospace Design
+                </h2>
+                <p class="mb-4">
+                    A Orion Aerospace Design é uma equipe de competição e extensão da UTFPR-PG. Criada em 2020, temos como missão desenvolver minifoguetes e nanosatélites, realizar pesquisas em astrobiologia e aproximar a ciência da comunidade.
+                </p>
+                <p>
+                    A computação é a área dedicada ao desenvolvimento de softwares e soluções baseadas em inteligência artificial, dividida em front e back-end.
+                </p>
+            </div>
+            <div class="fade-hidden delay-2 grid grid-cols-2 gap-4 mt-8">
+                <img class="w-full rounded-lg" src="src/images/about/orion1.png" alt="img1">
+                <img class="mt-4 w-full lg:mt-10 rounded-lg" src="src/images/about/orion2.png" alt="img2">
+            </div>
+        </div>
+    </section>
+
+    <!-- AREAS -->
+    <section id="areas" class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+            <span class="text-blue-700 dark:text-blue-500">
+                Nossas Áreas
+            </span>
+            <div class="max-w-screen-md mb-8 lg:mb-16">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                    Frentes de trabalho
+                </h2>
+                <p class="text-gray-500 sm:text-xl dark:text-gray-400">
+                    A equipe de computação atua em duas frentes complementares.
+                </p>
+            </div>
+            
+            <div class="flex flex-col gap-8">
+                
+                <div class="fade-hidden items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+                    <div class="shrink-0">
+                        <img class="w-full h-56 sm:w-72 sm:h-full object-cover rounded-t-lg sm:rounded-none sm:rounded-l-lg" src="src/images/about/frontend.png" alt="frontend">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            Front-End
+                        </h3>
+                        <span class="text-gray-500 dark:text-gray-400">React • HTML/CSS • Figma • UI/UX</span>
+                        <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+                            Interfaces visuais, experiências de usuário e design de sistemas interativos para as missões da Orion. Criamos os portais e dashboards que dão vida aos dados de telemetria.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-hidden delay-2 items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+                    <div class="shrink-0">
+                        <img class="w-full h-56 sm:w-72 sm:h-full object-cover rounded-t-lg sm:rounded-none sm:rounded-l-lg" src="src/images/about/backend.png" alt="backend">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            Back-End
+                        </h3>
+                        <span class="text-gray-500 dark:text-gray-400">Python • Node.js • SQL • APIs</span>
+                        <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+                            APIs, bancos de dados e inteligência artificial aplicados às análises de voo e dados de telemetria. Desenvolvemos os sistemas que processam e armazenam os dados das missões.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projetos" class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+            <span class="text-blue-700 dark:text-blue-500">
+                Nossos projetos
+            </span>
+            <div class="max-w-screen-md mb-8 lg:mb-16">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                    Desenvolvidos por nossa equipe
+                </h2>
+                <p class="text-gray-500 sm:text-xl dark:text-gray-400">
+                    O foco atual da equipe de computação é criar um site para o projeto, visando trazer maior visibilidade e alcance.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row md:justify-between space-y-8 md:space-y-0 md:gap-16 lg:gap-24">
+                
+    <div class="fade-hidden md:w-1/2 lg:w-[45%]">
+        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-full bg-blue-500 lg:h-16 lg:w-16 dark:bg-blue-600">
+            <svg class="w-6 h-6 text-white lg:w-8 lg:h-8" fill="currentColor" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM96 96H288c17.7 0 32 14.3 32 32v32c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V128c0-17.7 14.3-32 32-32zM224 256c0 17.7-14.3 32-32 32H160c-17.7 0-32-14.3-32-32V224c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32v32zm0 96c0 17.7-14.3 32-32 32H160c-17.7 0-32-14.3-32-32V320c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32v32zM320 224v32c0 17.7-14.3 32-32 32H256c-17.7 0-32-14.3-32-32V224c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32zM288 384c17.7 0 32-14.3 32-32V320c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32zM96 384c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32H64c-17.7 0-32 14.3-32 32V352c0 17.7 14.3 32 32 32h32z"/>
+            </svg>
+        </div>
+        <h3 class="mb-2 text-2xl font-bold dark:text-white">IEC</h3>
+        <p class="text-lg text-gray-500 dark:text-gray-400">
+            Plataforma que reúne Cálculo I, Física, Álgebra Linear e Química em ambiente interativo para estudantes de engenharia.
+        </p>
+    </div>
+
+    <div class="fade-hidden delay-2 md:w-1/2 lg:w-[45%]">
+        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-full bg-blue-500 lg:h-16 lg:w-16 dark:bg-blue-600">
+            <svg class="w-6 h-6 text-white lg:w-8 lg:h-8" fill="currentColor" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M156.6 384.9L125.7 354c-8.5-8.5-11.5-20.8-7.7-32.2c3-8.9 7-20.5 11.8-33.8L24 288c-8.6 0-16.6-4.6-20.9-12.1s-4.2-16.7 .2-24.1l52.5-88.5c13-21.9 36.5-35.3 61.9-35.3l82.3 0c2.4-4 4.8-7.7 7.2-11.3C289.1-4.1 411.1-8.1 483.9 5.3c11.6 2.1 20.6 11.2 22.8 22.8c13.4 72.9 9.3 194.8-111.4 276.7c-3.5 2.4-7.3 4.8-11.3 7.2v82.3c0 25.4-13.4 49-35.3 61.9l-88.5 52.5c-7.4 4.4-16.6 4.5-24.1 .2s-12.1-12.2-12.1-20.9l0-105.8c-13.3 4.8-24.9 8.8-33.8 11.8c-11.4 3.8-23.7 .8-32.2-7.7zM392 152a24 24 0 1 0 -48 0 24 24 0 1 0 48 0z"/>
+            </svg>
+        </div>
+        <h3 class="mb-1 text-2xl font-bold dark:text-white">Site da Orion</h3>
+        
+        <span class="block mb-3 text-sm font-semibold text-blue-500 dark:text-blue-400 uppercase tracking-wider">
+            Em desenvolvimento
+        </span>
+        
+        <p class="text-lg text-gray-500 dark:text-gray-400">
+            Site institucional com documentação detalhada e apresentação das áreas da Orion. Previsão: 1º semestre de 2026.
+        </p>
+    </div>
+
+</div>
+
+            </div>
+        </div>
+    </section>
+
+        <!-- CONTACT -->
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+            <h2 class="fade-hidden mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Entre em contato</h2>
+            <p class="fade-hidden delay-1 mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+                Tem alguma dúvida? Fale com a gente!
+            </p>
+            <form action="#" class="fade-hidden delay-2 space-y-8">
+                <div>
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Seu e-mail</label>
+                    <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="exemplo@gmail.com" required>
+                </div>
+                <div>
+                    <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Assunto</label>
+                    <input type="text" id="subject" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Deixe-nos saber como podemos ajudar você" required>
+                </div>
+                <div class="sm:col-span-2">
+                    <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Sua mensagem</label>
+                    <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Deixe sua mensagem"></textarea>
+                </div>
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Enviar
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="p-4 bg-white sm:p-6 dark:bg-gray-800">
+        <div class="mx-auto max-w-screen-xl pt-3 pb-3">
+            <div class="md:flex md:justify-between">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="flex items-center">
+                        <img src="src/images/logo/orionlogo.png" class="block dark:hidden w-32 h-auto" alt="logo">
+                        <img src="src/images/logo/orionlogo.png" class="hidden dark:block w-32 h-auto" alt="logo">
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                    
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Nos siga</h2>
+                        <ul class="text-gray-600 dark:text-gray-400">
+                            <li class="mb-4">
+                                <a href="https://www.instagram.com/orion.aerospace/" class="hover:underline ">Instagram</a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/company/orion-aerospace-design/" class="hover:underline">LinkedIn</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">Orion Aerospace Design · Computação · UTFPR-PG · 2025
+                </span>
+                <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+                    <a href="https://www.facebook.com/orion.aerospace/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="https://www.instagram.com/orion.aerospace/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="src/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="src/js/scroll.js"></script>
+    <script src="src/js/fade.js"></script>
+</body>
+</html>
